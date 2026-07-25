@@ -1,1 +1,526 @@
 /* css/style.css - Expense & Budget Visualization styles */
+
+/* =====================================================================
+   Custom Properties (Design Tokens)
+   ===================================================================== */
+
+:root {
+  /* Brand / primary action colour */
+  --color-primary: #1a56db;        /* blue — contrast 5.9:1 on --color-bg   */
+  --color-primary-hover: #1245b8;  /* darker shade for interactive states    */
+
+  /* Page chrome */
+  --color-bg: #ffffff;             /* white background                       */
+  --color-surface: #f5f7fa;        /* light grey for cards / sections        */
+  --color-border: #d1d5db;         /* neutral border                         */
+
+  /* Body text — 7:1 contrast on white (exceeds 4.5:1 WCAG AA requirement)   */
+  --color-text: #1f2937;
+  --color-text-muted: #4b5563;     /* secondary text — 7.2:1 on white        */
+
+  /* Semantic colours */
+  --color-success: #166534;        /* dark green — 7.5:1 on white            */
+  --color-error: #b91c1c;          /* dark red   — 6.9:1 on white            */
+  --color-warning: #92400e;        /* dark amber — 5.2:1 on white            */
+
+  /* Typography */
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+  --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing scale */
+  --space-xs:  0.25rem;  /*  4px */
+  --space-sm:  0.5rem;   /*  8px */
+  --space-md:  1rem;     /* 16px */
+  --space-lg:  1.5rem;   /* 24px */
+  --space-xl:  2rem;     /* 32px */
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+/* =====================================================================
+   Base / Reset
+   ===================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base); /* 16px — satisfies Requirement 7.3 */
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);        /* 16px */
+  line-height: var(--line-height-base);    /* 1.5  */
+  color: var(--color-text);               /* #1f2937 — 7:1 contrast on white */
+  background-color: var(--color-bg);      /* #ffffff */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================================
+   Balance Display  (Requirement 4.1, 7.3)
+   Always visible at the top; prominent size for at-a-glance reading.
+   #1f2937 on #ffffff = 7:1 contrast — exceeds 4.5:1 WCAG AA.
+   ===================================================================== */
+
+#balance-display {
+  font-size: 2.5rem;           /* ~40px — clearly prominent over body text  */
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-text);    /* #1f2937 — 7:1 contrast on white           */
+  padding: var(--space-lg) var(--space-md);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* =====================================================================
+   Error Banner  (Requirement 7.3, 7.5)
+   Uses role="alert" (already in HTML) so screen readers announce it.
+   Hidden via the HTML `hidden` attribute; no display toggling needed here.
+   ===================================================================== */
+
+#error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background-color: #fef2f2;   /* very light red surface                    */
+  color: var(--color-error);   /* #b91c1c — 6.9:1 on #fef2f2                */
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);   /* 16px — satisfies Requirement 7.3   */
+  line-height: var(--line-height-base);
+  /* Sits above main content; top-of-page placement handled by HTML order   */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#error-banner[hidden] {
+  /* Reinforce that hidden attribute collapses the element completely        */
+  display: none;
+}
+
+#error-banner-message {
+  flex: 1;
+}
+
+/* Dismiss button (×) — keyboard-focusable and clearly styled (Req 7.5)    */
+#error-banner button {
+  flex-shrink: 0;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--color-error);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  /* Minimum 44×44 touch target recommendation                              */
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+#error-banner button:hover {
+  background-color: #fecaca;   /* light red tint on hover                   */
+}
+
+/* Visible focus ring for keyboard users — satisfies Requirement 7.5        */
+#error-banner button:focus-visible {
+  outline: none;
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.35);
+}
+
+/* =====================================================================
+   Input Form  (Requirements 1.1, 7.5)
+   Layout, field styling, submit button, inline errors, and focus rings.
+   ===================================================================== */
+
+/* Form container — vertical stack of field groups with a surface card     */
+#transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-surface);  /* #f5f7fa light grey card      */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* Each label + input/select + error span trio                              */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.field-group label {
+  font-size: var(--font-size-base);  /* 16px — satisfies Requirement 7.3   */
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Text input, number input, and select — unified appearance                */
+#input-name,
+#input-amount,
+#input-category {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);  /* ≥16px — satisfies Requirement 7.3  */
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#input-name:hover,
+#input-amount:hover,
+#input-category:hover {
+  border-color: var(--color-primary);
+}
+
+/* Submit button — primary brand colour with hover state (Requirement 7.5) */
+#btn-add {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);  /* 16px */
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primary);   /* #1a56db                      */
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  align-self: flex-start;
+  min-height: 2.75rem;               /* comfortable click/tap target         */
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#btn-add:hover {
+  background-color: var(--color-primary-hover);  /* #1245b8                 */
+}
+
+/* Inline field error messages — appear below the offending field            */
+.field-error {
+  display: block;
+  font-size: 0.875rem;               /* slightly smaller than body text      */
+  line-height: var(--line-height-base);
+  color: var(--color-error);         /* #b91c1c — 6.9:1 on white            */
+  min-height: 1.25em;                /* reserve space so layout doesn't jump */
+}
+
+/* -----------------------------------------------------------------------
+   Visible focus rings — keyboard operability (Requirement 7.5)
+   Matches the box-shadow pattern used on #error-banner button:focus-visible
+   ----------------------------------------------------------------------- */
+
+#input-name:focus-visible,
+#input-amount:focus-visible,
+#input-category:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.35);
+}
+
+#btn-add:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.35);
+}
+
+/* Fallback for browsers that don't support :focus-visible                  */
+#input-name:focus,
+#input-amount:focus,
+#input-category:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.35);
+}
+
+#btn-add:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.35);
+}
+
+/* =====================================================================
+   Transaction List  (Requirements 2.1, 2.2, 3.1, 7.5)
+   Scrollable container with row-based entries showing name, amount,
+   category, and a delete button in a single flex row.
+   ===================================================================== */
+
+/* ── Container ──────────────────────────────────────────────────────── */
+
+#transaction-list {
+  list-style: none;              /* remove default bullets                  */
+  padding: 0;
+  margin: 0;
+
+  /* Card appearance matching the form above (Req 2.1 visual grouping)    */
+  background-color: var(--color-surface);   /* #f5f7fa                    */
+  border: 1px solid var(--color-border);    /* #d1d5db                    */
+  border-radius: var(--radius-md);          /* 8px                        */
+
+  /* Scrollability — Requirement 2.2 ───────────────────────────────── */
+  max-height: 320px;             /* ~5 rows; list scrolls beyond this     */
+  overflow-y: auto;              /* vertical scrollbar when overflowing   */
+}
+
+/* ── Transaction rows — Requirement 2.1 ────────────────────────────── */
+
+#transaction-list li {
+  display: flex;                 /* name · amount · category · delete in a row */
+  align-items: center;           /* vertically centred columns                 */
+  gap: var(--space-md);          /* 16px gap between columns                   */
+  padding: var(--space-sm) var(--space-md);  /* comfortable touch target       */
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);         /* white row on grey container    */
+}
+
+#transaction-list li:last-child {
+  border-bottom: none;           /* no divider after the last row              */
+}
+
+/* First row gets rounded top corners to follow the container radius       */
+#transaction-list li:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* Last row gets rounded bottom corners                                    */
+#transaction-list li:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* Single item: both pairs apply                                           */
+#transaction-list li:only-child {
+  border-radius: var(--radius-md);
+}
+
+/* Item name — grows to fill the remaining space (Req 2.1)                */
+#transaction-list li .transaction-name {
+  flex: 1;
+  font-size: var(--font-size-base);    /* 16px — Req 7.3                  */
+  color: var(--color-text);            /* #1f2937 — 7:1 on white          */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Formatted amount — fixed width, monospaced-feel alignment (Req 2.1)   */
+#transaction-list li .transaction-amount {
+  flex-shrink: 0;
+  font-size: var(--font-size-base);    /* 16px — Req 7.3                  */
+  font-weight: 600;
+  color: var(--color-text);            /* #1f2937 — 7:1 on white          */
+  text-align: right;
+  min-width: 5rem;                     /* enough room for '$999.99'       */
+}
+
+/* Category badge — natural width, muted colour (Req 2.1)                */
+#transaction-list li .transaction-category {
+  flex-shrink: 0;
+  font-size: 0.875rem;                 /* 14px — still ≥ 7:1 on white     */
+  color: var(--color-text-muted);      /* #4b5563 — 7.2:1 on white        */
+  text-align: center;
+  min-width: 5.5rem;
+}
+
+/* ── Delete button — Requirements 3.1, 7.5 ────────────────────────── */
+
+#transaction-list .btn-delete {
+  flex-shrink: 0;
+  font-family: var(--font-family-base);
+  font-size: 1rem;               /* icon is rendered as text/emoji          */
+  line-height: 1;
+  color: var(--color-error);     /* #b91c1c — 6.9:1 on white               */
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  /* Minimum 44×44 px touch target (Req 7.5) */
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+#transaction-list .btn-delete:hover {
+  background-color: #fef2f2;     /* very light red tint — same as error banner */
+  border-color: var(--color-error);
+}
+
+/* Visible focus ring — keyboard operability (Requirement 7.5)            */
+#transaction-list .btn-delete:focus-visible {
+  outline: none;
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.35);
+}
+
+/* Fallback for browsers that don't support :focus-visible                 */
+#transaction-list .btn-delete:focus {
+  outline: none;
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.35);
+}
+
+/* ── Empty-state message — Requirement 2.4 ─────────────────────────── */
+
+#transaction-list li.empty-state {
+  /* Override the flex row layout: centre the message instead             */
+  display: block;
+  text-align: center;
+  font-style: italic;
+  color: var(--color-text-muted);   /* #4b5563 — 7.2:1 on white           */
+  font-size: var(--font-size-base); /* 16px                               */
+  padding: var(--space-lg) var(--space-md);
+  border-bottom: none;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+
+/* =====================================================================
+   Pie Chart Section  (Requirements 5.1, 8.5)
+   The wrapping <section> provides visual separation from the list above.
+   #chart-canvas is constrained so it doesn't overflow narrow screens.
+   #chart-fallback displays a text breakdown when Chart.js is unavailable.
+   Both elements use the `hidden` HTML attribute for show/hide — this CSS
+   must NOT set `display` on them directly so that attribute behaviour is
+   preserved (the [hidden] reinforcement block below handles this safely).
+   ===================================================================== */
+
+/* ── Section container ───────────────────────────────────────────────── */
+
+section[aria-labelledby="chart-heading"] {
+  padding: var(--space-lg) var(--space-md);
+  border-top: 1px solid var(--color-border);  /* visual separator from the list */
+}
+
+/* ── Canvas constraint — Requirement 5.1 ────────────────────────────── */
+
+#chart-canvas {
+  /* Responsive: fills the container up to a comfortable maximum width    */
+  width: 100%;
+  max-width: 480px;
+  /* Centre the canvas horizontally within the section                    */
+  display: block;
+  margin: 0 auto;
+}
+
+/*
+ * Reinforce [hidden] so that any inherited or cascaded `display` value
+ * from the rule above cannot accidentally reveal the element.
+ * The selector specificity is intentionally higher than the plain
+ * `#chart-canvas` rule so it always wins when the attribute is present.
+ */
+#chart-canvas[hidden] {
+  display: none;
+}
+
+/* ── Fallback text container — Requirement 8.5 ──────────────────────── */
+
+#chart-fallback {
+  /* Typography — readable body text at base size                         */
+  font-size: var(--font-size-base);      /* 16px — satisfies Req 7.3      */
+  line-height: var(--line-height-base);  /* 1.5                           */
+  color: var(--color-text-muted);        /* #4b5563 — 7.2:1 on white      */
+
+  /* Spacing and visual grouping                                          */
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-surface);  /* #f5f7fa — matches form/list */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* Reinforce [hidden] for the fallback container (same rationale as above) */
+#chart-fallback[hidden] {
+  display: none;
+}
+
+/* =====================================================================
+   Responsive Layout  (Requirement 7.1)
+   Mobile-first single-column layout. The <main> element is the layout
+   root: it centres the content column and constrains its width so that
+   nothing clips or overlaps at any viewport.
+   ===================================================================== */
+
+/* ── App container (main) ────────────────────────────────────────────── */
+
+main {
+  display: flex;
+  flex-direction: column;         /* single-column stack — mobile default  */
+  gap: var(--space-lg);           /* 24px between sections on narrow screens */
+
+  width: 100%;
+  max-width: 720px;               /* prevents the form stretching too wide  */
+  margin-inline: auto;            /* centres the column in wider viewports  */
+
+  /* Horizontal padding keeps content away from viewport edges on mobile   */
+  padding: var(--space-md);       /* 16px left/right on narrow screens      */
+  padding-bottom: var(--space-xl); /* extra breathing room at the bottom    */
+}
+
+/* Section headings (h2) inside main — consistent spacing above each one  */
+main section > h2 {
+  font-size: 1.125rem;            /* 18px — clearly larger than body text   */
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm); /* 8px gap between heading and its content */
+}
+
+/* ── Wider-screen adjustments (≥ 600 px) ─────────────────────────────── */
+
+@media (min-width: 600px) {
+  main {
+    gap: var(--space-xl);         /* 32px between sections — more breathing room */
+    padding: var(--space-lg);     /* 24px on all sides                      */
+    padding-bottom: calc(var(--space-xl) * 1.5);  /* 48px bottom clearance  */
+  }
+
+  /* Give the form a bit more internal padding on wider screens            */
+  #transaction-form {
+    padding: var(--space-xl);     /* 32px interior padding                  */
+  }
+
+  /* Wider chart / fallback area to use the extra horizontal space         */
+  #chart-canvas,
+  #chart-fallback {
+    max-width: 560px;
+  }
+}
+
+/* ── Prevent any overflow / clipping across all widths ───────────────── */
+
+body {
+  overflow-x: hidden;             /* guard against accidental horizontal scroll */
+  min-height: 100vh;
+}
+
+/*
+ * Ensure nothing inside the transaction list rows overflows its track.
+ * The .transaction-name already uses text-overflow: ellipsis; this rule
+ * adds a hard min-width:0 on the flex items so long names compress rather
+ * than push siblings out of the container.
+ */
+#transaction-list li .transaction-name {
+  min-width: 0;                   /* allow flex shrinking past content size */
+}

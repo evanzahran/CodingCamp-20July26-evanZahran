@@ -153,6 +153,353 @@
         "chatSessionId": "sess_befedd4e-fb96-4265-b586-2d78c2e5a2f5",
         "timestamp": 1784947731022
       }
+    ],
+    "5.1 Implement `TransactionManager.setList(list)` and `TransactionManager.getList()`": [
+      {
+        "executionId": "bd13456b-99b5-44d6-9a4d-2befd02dac32",
+        "chatSessionId": "sess_4eaa046d-f5fd-40fd-9993-bf31dd93218a",
+        "timestamp": 1784947753130
+      },
+      {
+        "executionId": "bd13456b-99b5-44d6-9a4d-2befd02dac32",
+        "chatSessionId": "sess_4eaa046d-f5fd-40fd-9993-bf31dd93218a",
+        "timestamp": 1784947838232
+      }
+    ],
+    "5.2 Implement `TransactionManager.add(formData)`": [
+      {
+        "executionId": "437f65be-98a9-4cde-b414-1cdef580125d",
+        "chatSessionId": "sess_d1a5d59d-4014-4be1-afba-73b64f05da1f",
+        "timestamp": 1784947856568
+      },
+      {
+        "executionId": "437f65be-98a9-4cde-b414-1cdef580125d",
+        "chatSessionId": "sess_d1a5d59d-4014-4be1-afba-73b64f05da1f",
+        "timestamp": 1784947920040
+      }
+    ],
+    "5.4 Implement `TransactionManager.remove(id)`": [
+      {
+        "executionId": "0e2fa6e5-5047-443b-9af1-fab6ec137afb",
+        "chatSessionId": "sess_fd6cbdf1-c66e-403c-aa01-66b93774cc8b",
+        "timestamp": 1784947944245
+      },
+      {
+        "executionId": "0e2fa6e5-5047-443b-9af1-fab6ec137afb",
+        "chatSessionId": "sess_fd6cbdf1-c66e-403c-aa01-66b93774cc8b",
+        "timestamp": 1784947999453
+      }
+    ],
+    "5.6 Implement `TransactionManager.getTotal()` and `TransactionManager.getCategoryTotals()`": [
+      {
+        "executionId": "17228256-f064-462c-891f-5497da56f2d4",
+        "chatSessionId": "sess_f368089d-0b2f-4272-823f-b7b834f459e4",
+        "timestamp": 1784948015474
+      },
+      {
+        "executionId": "17228256-f064-462c-891f-5497da56f2d4",
+        "chatSessionId": "sess_f368089d-0b2f-4272-823f-b7b834f459e4",
+        "timestamp": 1784948069294
+      }
+    ],
+    "5. Implement `TransactionManager` in `js/app.js`": [
+      {
+        "executionId": "17228256-f064-462c-891f-5497da56f2d4",
+        "chatSessionId": "sess_f368089d-0b2f-4272-823f-b7b834f459e4",
+        "timestamp": 1784948069350
+      }
+    ],
+    "7.1 Add `<head>` metadata, CDN script tag for Chart.js v4, and file references": [
+      {
+        "executionId": "29d26190-1052-44fb-8815-5ccbb3479555",
+        "chatSessionId": "sess_50a32006-7925-40eb-9949-f01338fc744d",
+        "timestamp": 1784948085665
+      },
+      {
+        "executionId": "29d26190-1052-44fb-8815-5ccbb3479555",
+        "chatSessionId": "sess_50a32006-7925-40eb-9949-f01338fc744d",
+        "timestamp": 1784948134568
+      }
+    ],
+    "7.2 Add `<body>` semantic layout elements": [
+      {
+        "executionId": "5ea83e4e-4eb0-49b2-97fd-2867f1a6744f",
+        "chatSessionId": "sess_483d3fd7-a104-4eae-af14-0d3f01105f7b",
+        "timestamp": 1784948160959
+      },
+      {
+        "executionId": "5ea83e4e-4eb0-49b2-97fd-2867f1a6744f",
+        "chatSessionId": "sess_483d3fd7-a104-4eae-af14-0d3f01105f7b",
+        "timestamp": 1784948219306
+      }
+    ],
+    "7. Build `index.html` structure": [
+      {
+        "executionId": "5ea83e4e-4eb0-49b2-97fd-2867f1a6744f",
+        "chatSessionId": "sess_483d3fd7-a104-4eae-af14-0d3f01105f7b",
+        "timestamp": 1784948219358
+      }
+    ],
+    "8.1 Implement `UIRenderer.renderList(list)`": [
+      {
+        "executionId": "aae126ff-6ba6-4760-842e-1a3c7420a4c8",
+        "chatSessionId": "sess_09b0ede2-82d8-4a6b-8a80-8f89e7b831a9",
+        "timestamp": 1784948238556
+      },
+      {
+        "executionId": "aae126ff-6ba6-4760-842e-1a3c7420a4c8",
+        "chatSessionId": "sess_09b0ede2-82d8-4a6b-8a80-8f89e7b831a9",
+        "timestamp": 1784948322617
+      }
+    ],
+    "8.3 Implement `UIRenderer.renderBalance(total)`": [
+      {
+        "executionId": "c2751277-196f-4e02-96d2-b5110765418f",
+        "chatSessionId": "sess_cb077438-60a5-453f-8033-ddc8eac91b01",
+        "timestamp": 1784948339682
+      },
+      {
+        "executionId": "c2751277-196f-4e02-96d2-b5110765418f",
+        "chatSessionId": "sess_cb077438-60a5-453f-8033-ddc8eac91b01",
+        "timestamp": 1784948373722
+      }
+    ],
+    "8.4 Implement `UIRenderer.resetForm()`": [
+      {
+        "executionId": "df09836c-28ee-4d94-b751-0538bfb5e199",
+        "chatSessionId": "sess_c450d9d3-037f-46f5-91fd-a371cd333d60",
+        "timestamp": 1784948389597
+      },
+      {
+        "executionId": "df09836c-28ee-4d94-b751-0538bfb5e199",
+        "chatSessionId": "sess_c450d9d3-037f-46f5-91fd-a371cd333d60",
+        "timestamp": 1784948422308
+      }
+    ],
+    "8.5 Implement `UIRenderer.showFieldError(fieldId, message)` and `UIRenderer.clearErrors()`": [
+      {
+        "executionId": "ade7b87b-9625-4680-8db8-b88376400c9d",
+        "chatSessionId": "sess_fa3e30c1-0f55-4ac6-80d8-222ee90cc7a4",
+        "timestamp": 1784948439704
+      },
+      {
+        "executionId": "ade7b87b-9625-4680-8db8-b88376400c9d",
+        "chatSessionId": "sess_fa3e30c1-0f55-4ac6-80d8-222ee90cc7a4",
+        "timestamp": 1784948477065
+      }
+    ],
+    "8.6 Implement `UIRenderer.showErrorBanner(message)` and `UIRenderer.hideErrorBanner()`": [
+      {
+        "executionId": "14cc2635-75de-4e89-8c98-d947b98fa763",
+        "chatSessionId": "sess_6c35c1a0-5fc1-4ed1-83f4-eac18adc43b2",
+        "timestamp": 1784948493642
+      },
+      {
+        "executionId": "14cc2635-75de-4e89-8c98-d947b98fa763",
+        "chatSessionId": "sess_6c35c1a0-5fc1-4ed1-83f4-eac18adc43b2",
+        "timestamp": 1784948565012
+      }
+    ],
+    "8.7 Implement `UIRenderer.confirmDelete(transactionName)`": [
+      {
+        "executionId": "e0568bb2-dd6f-461b-a13c-7bedcc6e640e",
+        "chatSessionId": "sess_b8f96975-997c-493d-99e7-dce5f9a6c31c",
+        "timestamp": 1784948583747
+      },
+      {
+        "executionId": "e0568bb2-dd6f-461b-a13c-7bedcc6e640e",
+        "chatSessionId": "sess_b8f96975-997c-493d-99e7-dce5f9a6c31c",
+        "timestamp": 1784948609476
+      }
+    ],
+    "8. Implement `UIRenderer` in `js/app.js`": [
+      {
+        "executionId": "e0568bb2-dd6f-461b-a13c-7bedcc6e640e",
+        "chatSessionId": "sess_b8f96975-997c-493d-99e7-dce5f9a6c31c",
+        "timestamp": 1784948609554
+      }
+    ],
+    "9.1 Implement `ChartManager.isAvailable()`": [
+      {
+        "executionId": "c9fff0c1-20a5-429f-a81d-b0183a574815",
+        "chatSessionId": "sess_d2a04b15-460e-49c6-ba17-75aebe8fa3df",
+        "timestamp": 1784948625167
+      },
+      {
+        "executionId": "c9fff0c1-20a5-429f-a81d-b0183a574815",
+        "chatSessionId": "sess_d2a04b15-460e-49c6-ba17-75aebe8fa3df",
+        "timestamp": 1784948687596
+      }
+    ],
+    "9.2 Implement `ChartManager._renderFallback(categoryTotals)`": [
+      {
+        "executionId": "1d024847-b0ee-4efd-b35a-5722d9c3a2f4",
+        "chatSessionId": "sess_10683775-fa55-4616-b27e-40ed23fa4851",
+        "timestamp": 1784948699080
+      },
+      {
+        "executionId": "1d024847-b0ee-4efd-b35a-5722d9c3a2f4",
+        "chatSessionId": "sess_10683775-fa55-4616-b27e-40ed23fa4851",
+        "timestamp": 1784948739215
+      }
+    ],
+    "9.3 Implement `ChartManager.init(categoryTotals)`": [
+      {
+        "executionId": "fbaf9767-2fa4-4bac-a3ed-623bb7f6ce0f",
+        "chatSessionId": "sess_d3495bfb-c099-4364-8ca6-25d799809e97",
+        "timestamp": 1784948752207
+      },
+      {
+        "executionId": "fbaf9767-2fa4-4bac-a3ed-623bb7f6ce0f",
+        "chatSessionId": "sess_d3495bfb-c099-4364-8ca6-25d799809e97",
+        "timestamp": 1784948827578
+      }
+    ],
+    "9.4 Implement `ChartManager.update(categoryTotals)`": [
+      {
+        "executionId": "2119266d-5303-4167-80c6-2cc66d3cac4a",
+        "chatSessionId": "sess_8c0c3816-2155-4133-81af-b0ca93c79c9e",
+        "timestamp": 1784948844729
+      },
+      {
+        "executionId": "2119266d-5303-4167-80c6-2cc66d3cac4a",
+        "chatSessionId": "sess_8c0c3816-2155-4133-81af-b0ca93c79c9e",
+        "timestamp": 1784949001015
+      }
+    ],
+    "9. Implement `ChartManager` in `js/app.js`": [
+      {
+        "executionId": "2119266d-5303-4167-80c6-2cc66d3cac4a",
+        "chatSessionId": "sess_8c0c3816-2155-4133-81af-b0ca93c79c9e",
+        "timestamp": 1784949001111
+      }
+    ],
+    "10.1 Implement `DOMContentLoaded` handler": [
+      {
+        "executionId": "0f9a9375-e5a8-4192-8e97-682c3b55b2de",
+        "chatSessionId": "sess_5732cb52-e881-46e2-bfa0-518af707952d",
+        "timestamp": 1784949021818
+      },
+      {
+        "executionId": "0f9a9375-e5a8-4192-8e97-682c3b55b2de",
+        "chatSessionId": "sess_5732cb52-e881-46e2-bfa0-518af707952d",
+        "timestamp": 1784949126686
+      }
+    ],
+    "10.2 Implement form `submit` event handler on `#transaction-form`": [
+      {
+        "executionId": "2a9c2230-6232-457b-95f0-80903dada1f9",
+        "chatSessionId": "sess_71504fa4-ae72-40b9-90ee-da4251216b96",
+        "timestamp": 1784949144080
+      },
+      {
+        "executionId": "2a9c2230-6232-457b-95f0-80903dada1f9",
+        "chatSessionId": "sess_71504fa4-ae72-40b9-90ee-da4251216b96",
+        "timestamp": 1784949226162
+      }
+    ],
+    "10.3 Implement `transactions:changed` event listener on `document`": [
+      {
+        "executionId": "6ece0fd7-52a9-4ef1-847b-5acff2729f8c",
+        "chatSessionId": "sess_14982591-9535-4493-9549-ee6f280e4876",
+        "timestamp": 1784949250233
+      },
+      {
+        "executionId": "6ece0fd7-52a9-4ef1-847b-5acff2729f8c",
+        "chatSessionId": "sess_14982591-9535-4493-9549-ee6f280e4876",
+        "timestamp": 1784949331490
+      }
+    ],
+    "10.4 Implement delete click handler (event delegation on `#transaction-list`)": [
+      {
+        "executionId": "305db658-d935-4093-bd01-4db5453b74cd",
+        "chatSessionId": "sess_2b6ef082-47a6-4c03-9ac3-2bc7815305db",
+        "timestamp": 1784949347489
+      },
+      {
+        "executionId": "305db658-d935-4093-bd01-4db5453b74cd",
+        "chatSessionId": "sess_2b6ef082-47a6-4c03-9ac3-2bc7815305db",
+        "timestamp": 1784949465253
+      }
+    ],
+    "10. Wire app initialization and event handling in `js/app.js`": [
+      {
+        "executionId": "305db658-d935-4093-bd01-4db5453b74cd",
+        "chatSessionId": "sess_2b6ef082-47a6-4c03-9ac3-2bc7815305db",
+        "timestamp": 1784949465314
+      }
+    ],
+    "12.1 Define CSS custom properties and base styles": [
+      {
+        "executionId": "43dc6d9a-4f50-47de-a071-be7e601ae795",
+        "chatSessionId": "sess_53a6078d-d92f-41b9-8205-9d138c761570",
+        "timestamp": 1784949487047
+      },
+      {
+        "executionId": "43dc6d9a-4f50-47de-a071-be7e601ae795",
+        "chatSessionId": "sess_53a6078d-d92f-41b9-8205-9d138c761570",
+        "timestamp": 1784949541735
+      }
+    ],
+    "12.2 Style the Balance_Display and error banner": [
+      {
+        "executionId": "d40efc8d-55cf-4f06-80e2-c932b4666c4f",
+        "chatSessionId": "sess_938b86ca-04ff-45c8-a8db-db2a9cca43e4",
+        "timestamp": 1784949562156
+      },
+      {
+        "executionId": "d40efc8d-55cf-4f06-80e2-c932b4666c4f",
+        "chatSessionId": "sess_938b86ca-04ff-45c8-a8db-db2a9cca43e4",
+        "timestamp": 1784949638829
+      }
+    ],
+    "12. Style the app in `css/style.css`": [
+      {
+        "executionId": "4f1fb20a-e3a5-46aa-9584-20d0e07a9bfe",
+        "chatSessionId": "sess_317ce625-85c1-4abc-8cb2-2bba13824e0e",
+        "timestamp": 1784949692957
+      },
+      {
+        "executionId": "4f1fb20a-e3a5-46aa-9584-20d0e07a9bfe",
+        "chatSessionId": "sess_317ce625-85c1-4abc-8cb2-2bba13824e0e",
+        "timestamp": 1784949766751
+      }
+    ],
+    "12.4 Style the Transaction_List": [
+      {
+        "executionId": "bef60f85-3128-40f8-96fe-0a48a3177742",
+        "chatSessionId": "sess_c1eac7bc-c0cf-4cfe-b8f4-742e8c2622b9",
+        "timestamp": 1784949813745
+      },
+      {
+        "executionId": "bef60f85-3128-40f8-96fe-0a48a3177742",
+        "chatSessionId": "sess_c1eac7bc-c0cf-4cfe-b8f4-742e8c2622b9",
+        "timestamp": 1784949898568
+      }
+    ],
+    "12.5 Style the pie chart section": [
+      {
+        "executionId": "fa4b585f-2f33-41fb-b194-38109844402d",
+        "chatSessionId": "sess_7909ba53-4a04-4f06-9827-e1aa0b21426e",
+        "timestamp": 1784949915831
+      },
+      {
+        "executionId": "fa4b585f-2f33-41fb-b194-38109844402d",
+        "chatSessionId": "sess_7909ba53-4a04-4f06-9827-e1aa0b21426e",
+        "timestamp": 1784950005404
+      }
+    ],
+    "12.6 Apply responsive layout adjustments": [
+      {
+        "executionId": "a0fa9eda-d3bc-40df-8fac-bbe54b70eb45",
+        "chatSessionId": "sess_235168bb-ae19-4653-a554-9e9eafdf5e51",
+        "timestamp": 1784950020951
+      },
+      {
+        "executionId": "a0fa9eda-d3bc-40df-8fac-bbe54b70eb45",
+        "chatSessionId": "sess_235168bb-ae19-4653-a554-9e9eafdf5e51",
+        "timestamp": 1784950090093
+      }
     ]
   }
 }

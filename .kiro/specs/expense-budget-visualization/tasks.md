@@ -71,12 +71,12 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Minimum 100 iterations
     - **Validates: Requirements 1.4, 1.5**
 
-- [ ] 5. Implement `TransactionManager` in `js/app.js`
-  - [~] 5.1 Implement `TransactionManager.setList(list)` and `TransactionManager.getList()`
+- [x] 5. Implement `TransactionManager` in `js/app.js`
+  - [x] 5.1 Implement `TransactionManager.setList(list)` and `TransactionManager.getList()`
     - Store a copy in `_list`; `getList()` returns a shallow copy
     - _Requirements: 6.3, 6.4_
 
-  - [~] 5.2 Implement `TransactionManager.add(formData)`
+  - [x] 5.2 Implement `TransactionManager.add(formData)`
     - Call `Validator.validate(formData)`; if invalid throw validation error; otherwise create a Transaction object (all fields including generated id and ISO createdAt); call `StorageManager.save(newList)` first (throw on failure); set `_list = newList`; dispatch `new CustomEvent('transactions:changed')` on `document`
     - _Requirements: 1.2, 6.1_
 
@@ -87,7 +87,7 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Minimum 100 iterations
     - **Validates: Requirements 1.2**
 
-  - [~] 5.4 Implement `TransactionManager.remove(id)`
+  - [x] 5.4 Implement `TransactionManager.remove(id)`
     - Find the transaction with matching `id`; call `StorageManager.save(filteredList)` first (throw on failure); set `_list = filteredList`; dispatch `'transactions:changed'`
     - _Requirements: 3.3, 6.2_
 
@@ -98,7 +98,7 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Minimum 100 iterations
     - **Validates: Requirements 3.3**
 
-  - [~] 5.6 Implement `TransactionManager.getTotal()` and `TransactionManager.getCategoryTotals()`
+  - [x] 5.6 Implement `TransactionManager.getTotal()` and `TransactionManager.getCategoryTotals()`
     - Delegate to `computeTotal(_list)` and `computeCategoryTotals(_list)` respectively
     - _Requirements: 4.2, 5.1_
 
@@ -119,13 +119,13 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
 - [ ] 6. Checkpoint — Ensure all core logic tests pass
   - Run all property and unit tests for utility functions, StorageManager, Validator, and TransactionManager. Ask the user if any questions arise before continuing.
 
-- [ ] 7. Build `index.html` structure
-  - [~] 7.1 Add `<head>` metadata, CDN script tag for Chart.js v4, and file references
+- [x] 7. Build `index.html` structure
+  - [x] 7.1 Add `<head>` metadata, CDN script tag for Chart.js v4, and file references
     - Include `<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>` before `app.js`
     - Ensure `<meta charset="UTF-8">`, `<meta name="viewport" content="width=device-width, initial-scale=1.0">`, and `<link rel="stylesheet" href="css/style.css">`
     - _Requirements: 8.4, 8.5_
 
-  - [~] 7.2 Add `<body>` semantic layout elements
+  - [x] 7.2 Add `<body>` semantic layout elements
     - Add `<div id="error-banner" role="alert" hidden>` with a dismiss button (`×`)
     - Add `<p id="balance-display" aria-live="polite">` inside a `<header>` or `<section>` element
     - Add `<form id="transaction-form">` containing: `<input id="input-name" type="text" maxlength="100">`, `<input id="input-amount" type="number" step="0.01" min="0.01" max="999999999.99">`, `<select id="input-category">` with `<option>` elements for Food/Transport/Fun, and `<button id="btn-add" type="submit">`
@@ -134,8 +134,8 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Add `<canvas id="chart-canvas">` and `<div id="chart-fallback" aria-live="polite" hidden>` inside a chart section
     - _Requirements: 2.1, 3.1, 4.1, 5.1, 7.5_
 
-- [ ] 8. Implement `UIRenderer` in `js/app.js`
-  - [~] 8.1 Implement `UIRenderer.renderList(list)`
+- [x] 8. Implement `UIRenderer` in `js/app.js`
+  - [x] 8.1 Implement `UIRenderer.renderList(list)`
     - Clear `#transaction-list`; if `list` is empty render an empty-state `<li>` with message; otherwise render one `<li>` per transaction showing name, `formatCurrency(amount)`, category, and a `<button class="btn-delete">` with a `data-id` attribute
     - _Requirements: 2.1, 2.4, 3.1_
 
@@ -146,45 +146,45 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Minimum 100 iterations
     - **Validates: Requirements 2.1, 3.1**
 
-  - [~] 8.3 Implement `UIRenderer.renderBalance(total)`
+  - [x] 8.3 Implement `UIRenderer.renderBalance(total)`
     - Set the text content of `#balance-display` to `formatCurrency(total)`
     - _Requirements: 4.1, 4.2, 4.4_
 
-  - [~] 8.4 Implement `UIRenderer.resetForm()`
+  - [x] 8.4 Implement `UIRenderer.resetForm()`
     - Call `document.getElementById('transaction-form').reset()` and call `UIRenderer.clearErrors()`
     - _Requirements: 1.3_
 
-  - [~] 8.5 Implement `UIRenderer.showFieldError(fieldId, message)` and `UIRenderer.clearErrors()`
+  - [x] 8.5 Implement `UIRenderer.showFieldError(fieldId, message)` and `UIRenderer.clearErrors()`
     - `showFieldError`: populate the corresponding `#error-{fieldId}` span with `message`
     - `clearErrors`: empty all `.field-error` spans
     - _Requirements: 1.4, 1.5_
 
-  - [~] 8.6 Implement `UIRenderer.showErrorBanner(message)` and `UIRenderer.hideErrorBanner()`
+  - [x] 8.6 Implement `UIRenderer.showErrorBanner(message)` and `UIRenderer.hideErrorBanner()`
     - `showErrorBanner`: set text in `#error-banner`, remove `hidden` attribute
     - `hideErrorBanner`: add `hidden` attribute back
     - Also wire the dismiss button (`×`) to call `hideErrorBanner()` during app initialization
     - _Requirements: 1.6, 2.5, 3.4, 6.5_
 
-  - [~] 8.7 Implement `UIRenderer.confirmDelete(transactionName)`
+  - [x] 8.7 Implement `UIRenderer.confirmDelete(transactionName)`
     - Call `window.confirm()` with a message including the transaction name; return the boolean result
     - _Requirements: 3.2, 3.5_
 
-- [ ] 9. Implement `ChartManager` in `js/app.js`
-  - [~] 9.1 Implement `ChartManager.isAvailable()`
+- [x] 9. Implement `ChartManager` in `js/app.js`
+  - [x] 9.1 Implement `ChartManager.isAvailable()`
     - Return `typeof window.Chart !== 'undefined'`
     - _Requirements: 8.5_
 
-  - [~] 9.2 Implement `ChartManager._renderFallback(categoryTotals)`
+  - [x] 9.2 Implement `ChartManager._renderFallback(categoryTotals)`
     - Show `#chart-fallback`, set its innerHTML to a text breakdown of each category and its formatted total
     - _Requirements: 8.5_
 
-  - [~] 9.3 Implement `ChartManager.init(categoryTotals)`
+  - [x] 9.3 Implement `ChartManager.init(categoryTotals)`
     - If `isAvailable()`: hide `#chart-fallback`, create a new `Chart` on `#chart-canvas` as a `'pie'` type with labels = category names, data = category totals (omit zero-total categories), and enable percentage labels in the tooltip/label callbacks
     - If not available: call `_renderFallback(categoryTotals)`
     - Store the Chart instance in `_chart`
     - _Requirements: 5.1, 5.3, 5.4, 8.4, 8.5_
 
-  - [~] 9.4 Implement `ChartManager.update(categoryTotals)`
+  - [x] 9.4 Implement `ChartManager.update(categoryTotals)`
     - Filter to positive-total categories only; if `isAvailable()` and `_chart` exists: update `_chart.data.labels`, `_chart.data.datasets[0].data`, and call `_chart.update()`; if no transactions render an empty placeholder message on the canvas; if not available: call `_renderFallback(categoryTotals)`
     - _Requirements: 5.1, 5.2, 5.3, 5.5_
 
@@ -202,32 +202,32 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Minimum 100 iterations
     - **Validates: Requirements 5.4**
 
-- [ ] 10. Wire app initialization and event handling in `js/app.js`
-  - [~] 10.1 Implement `DOMContentLoaded` handler
+- [x] 10. Wire app initialization and event handling in `js/app.js`
+  - [x] 10.1 Implement `DOMContentLoaded` handler
     - Call `StorageManager.load()`; on success call `TransactionManager.setList(list)`, `UIRenderer.renderList(list)`, `UIRenderer.renderBalance(TransactionManager.getTotal())`, `ChartManager.init(TransactionManager.getCategoryTotals())`; on `StorageError` call `UIRenderer.showErrorBanner(message)` and initialize with empty state
     - _Requirements: 2.3, 6.3, 6.4, 6.5_
 
-  - [~] 10.2 Implement form `submit` event handler on `#transaction-form`
+  - [x] 10.2 Implement form `submit` event handler on `#transaction-form`
     - Prevent default; read `input-name`, `input-amount`, `input-category` values; call `Validator.validate(formData)`; on invalid call `UIRenderer.showFieldError()` for each error; on valid call `UIRenderer.clearErrors()`, then `TransactionManager.add(formData)`; on `StorageError` call `UIRenderer.showErrorBanner(message)`
     - _Requirements: 1.2, 1.4, 1.5, 1.6_
 
-  - [~] 10.3 Implement `transactions:changed` event listener on `document`
+  - [x] 10.3 Implement `transactions:changed` event listener on `document`
     - When fired: call `UIRenderer.renderList(TransactionManager.getList())`, `UIRenderer.renderBalance(TransactionManager.getTotal())`, `ChartManager.update(TransactionManager.getCategoryTotals())`, `UIRenderer.resetForm()`, and `UIRenderer.hideErrorBanner()`
     - _Requirements: 1.3, 3.3, 4.3, 5.2_
 
-  - [~] 10.4 Implement delete click handler (event delegation on `#transaction-list`)
+  - [x] 10.4 Implement delete click handler (event delegation on `#transaction-list`)
     - Listen for `click` on `#transaction-list`; check `event.target.closest('.btn-delete')`; read `data-id`; call `UIRenderer.confirmDelete(transactionName)`; if confirmed call `TransactionManager.remove(id)`; on `StorageError` call `UIRenderer.showErrorBanner(message)`
     - _Requirements: 3.2, 3.3, 3.4, 3.5_
 
 - [ ] 11. Checkpoint — Verify end-to-end wiring works
   - Ensure all tests pass. Manually open `index.html` and confirm: add a transaction → list updates → balance updates → chart updates → reload → data persists. Ask the user if any questions arise.
 
-- [ ] 12. Style the app in `css/style.css`
-  - [~] 12.1 Define CSS custom properties and base styles
+- [x] 12. Style the app in `css/style.css`
+  - [x] 12.1 Define CSS custom properties and base styles
     - Declare `--color-primary`, `--color-bg`, `--color-text`, `--color-error` etc. in `:root`; set `font-size: 16px`, `line-height: 1.5` on `body`; ensure all text meets at least 4.5:1 contrast ratio against the background
     - _Requirements: 7.3_
 
-  - [~] 12.2 Style the Balance_Display and error banner
+  - [x] 12.2 Style the Balance_Display and error banner
     - Make `#balance-display` prominent (large font, centered or top-aligned); style `#error-banner` with a visible error color and a dismiss button that is keyboard-focusable
     - _Requirements: 4.1, 7.3, 7.5_
 
@@ -235,15 +235,15 @@ Build a zero-dependency, client-side single-page application using HTML5, CSS3, 
     - Style all inputs, the select element, and the submit button; show `.field-error` spans in error color; ensure all interactive controls have a visible `:focus` outline
     - _Requirements: 1.1, 7.5_
 
-  - [~] 12.4 Style the Transaction_List
+  - [x] 12.4 Style the Transaction_List
     - Apply `max-height` and `overflow-y: auto` to `#transaction-list` so it scrolls when entries overflow; style each `<li>` to show name, amount, category, and delete button in a row
     - _Requirements: 2.1, 2.2_
 
-  - [~] 12.5 Style the pie chart section
+  - [x] 12.5 Style the pie chart section
     - Constrain the `<canvas>` to a reasonable max-width; style `#chart-fallback` text for readability; handle the hidden/visible transition via the `hidden` attribute
     - _Requirements: 5.1, 8.5_
 
-  - [~] 12.6 Apply responsive layout adjustments
+  - [x] 12.6 Apply responsive layout adjustments
     - Use a single-column layout by default; apply `@media` query for wider screens to adjust spacing; ensure no content is clipped or overlapping
     - _Requirements: 7.1_
 
